@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: app-jpa
+  profiles:
+    active: dev
+server:
+  port: ${PORT:9000}
+  servlet:
+    context-path: /api/v1
