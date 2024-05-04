@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - spring
+    volumes:
+      - ./db:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=db_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+networks:
+  spring:
+    name: spring
+    driver: bridge
+
+volumes:
+  db:
