@@ -12,11 +12,11 @@ Each example is provided as different branch. New features are made in increment
 based on previous one. In some cases there can be parallel patch in branches incremental (marked by origin branch
 column).
 
-| branch               | origin branch        | description                       |
-|----------------------|----------------------|-----------------------------------|
-| spring-boot          | main                 | Spring Boot & Spring Context      |
-| spring-data          | feature/data-jpa     | Spring Data & Jakarta Persistence |
-| spring-mvc           | ''/spring-security   | Spring MVC                        |
+| branch             | origin branch      | description                       |
+|--------------------|--------------------|-----------------------------------|
+| spring-boot        | main               | Spring Boot & Spring Context      |
+| feature/data-jpa   | feature/data-jpa   | Spring Data & Jakarta Persistence |
+| ''/spring-security | ''/spring-security | Spring Security                   |
 
 ## Requirements
 
