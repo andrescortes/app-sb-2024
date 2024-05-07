@@ -1,0 +1,30 @@
+### create product
+POST http://localhost:9000/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Tomato",
+  "price": 500,
+  "description": "Vegetables fresh",
+  "sku": "13"
+}
+
+### update product
+PUT http://localhost:9000/api/v1/products/3
+Content-Type: application/json
+
+{
+  "name": "Sofa",
+  "price": 50000,
+  "description": "Extra comfortable"
+}
+
+### fetch product
+GET http://localhost:9000/api/v1/products/3
+
+### fetch products
+GET http://localhost:9000/api/v1/products/all
+
+### remove a product
+DELETE http://localhost:9000/api/v1/products/3
+
