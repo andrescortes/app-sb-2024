@@ -2,6 +2,7 @@ package co.com.tkl.app.controllers;
 
 import co.com.tkl.app.entities.Product;
 import co.com.tkl.app.services.ProductService;
+import co.com.tkl.app.validators.CommonValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +26,7 @@ import java.util.Optional;
 public class ProductController {
 
     private final ProductService service;
-//    private final ProductValidation validation;
+    private final CommonValidator validator;
 
     @GetMapping("/all")
     public List<Product> list() {
@@ -44,9 +43,8 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Product product, BindingResult result) {
-//        validation.validate(product,result);
         if (result.hasFieldErrors()) {
-            return validation(result);
+            return validator.validate(result);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(product));
     }
@@ -55,7 +53,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProduct(@Valid @RequestBody Product product, BindingResult result, @PathVariable(name = "id") Long id) {
         if (result.hasFieldErrors()) {
-            return validation(result);
+            return validator.validate(result);
         }
         return service.update(id, product)
                 .map(ResponseEntity.status(HttpStatus.OK)::body)
@@ -67,12 +65,5 @@ public class ProductController {
         return service.delete(id)
                 .map(ResponseEntity.status(HttpStatus.OK)::body)
                 .orElseGet(() -> ResponseEntity.badRequest().build());
-    }
-
-
-    private ResponseEntity<?> validation(BindingResult result) {
-        Map<String, Object> errors = new HashMap<>();
-        result.getFieldErrors().forEach(fieldError -> errors.put(fieldError.getField(), fieldError.getDefaultMessage()));
-        return ResponseEntity.badRequest().body(errors);
     }
 }

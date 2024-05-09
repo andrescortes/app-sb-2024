@@ -28,7 +28,7 @@ public class DatabaseConf {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("co.com.tkl.app");
+        em.setPackagesToScan("co.com.tkl.app.entities");
         em.setPersistenceUnitName("AppSb2024UnitName");
 
         JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
