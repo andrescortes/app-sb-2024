@@ -1,0 +1,11 @@
+services:
+
+  app:
+    container_name: app
+    build:
+      context: .
+    environment:
+      - DB_HOST=amazon
+      - DB_NAME=app_test
+    ports:
+      - 9000:9000
