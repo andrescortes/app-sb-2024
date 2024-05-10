@@ -1,44 +1,52 @@
 ### create product
 POST http://localhost:9000/api/v1/products
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "name": "Tomato",
-  "price": 500,
-  "description": "Vegetables fresh",
-  "sku": "13"
+  "name": "Iphone XVII",
+  "price": 6000,
+  "description": "Electronics Apple Art",
+  "sku": "5"
 }
 
 ### update product
-PUT http://localhost:9000/api/v1/products/3
+PUT http://localhost:9000/api/v1/products/4
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
   "name": "Sofa",
   "price": 50000,
-  "description": "Extra comfortable"
+  "description": "Extra comfortable",
+  "sku": "3"
 }
 
 ### fetch product
-GET http://localhost:9000/api/v1/products/3
+GET http://localhost:9000/api/v1/products/1
+Authorization: Bearer {{token}}
 
 ### fetch products
 GET http://localhost:9000/api/v1/products/all
+Authorization: Bearer {{token}}
 
 ### remove a product
 DELETE http://localhost:9000/api/v1/products/3
+Authorization: Bearer {{token}}
 
 
 ### users
 GET http://localhost:9000/api/v1/users
 
-### create user
+### create user as admin
 POST http://localhost:9000/api/v1/users
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-  "username": "pepe",
-  "password": "123456"
+  "username": "andres",
+  "password": "123456",
+  "isAdmin": true
 }
 
 ### register user
@@ -49,3 +57,16 @@ Content-Type: application/json
   "username": "pepe2",
   "password": "123456"
 }
+
+### login
+POST http://localhost:9000/api/v1/login
+Content-Type: application/json
+
+{
+  "username": "pepe",
+  "password": "123456"
+}
+
+### products
+GET http://localhost:9000/api/v1/products/all
+Authorization: Bearer {{token}}

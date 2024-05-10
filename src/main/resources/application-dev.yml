@@ -3,3 +3,4 @@ app:
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:db_test}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
+  origins: ${URL_CLIENT_1:http://localhost:4200}, ${URL_CLIENT_2:http://localhost:3000}, ${URL_CLIENT_3:http://localhost:8080}
