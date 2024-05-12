@@ -5,5 +5,5 @@ spring:
     active: dev
 server:
   port: ${PORT:9000}
-  servlet:
-    context-path: /api/v1
+#  servlet:
+#    context-path: /api/v1
